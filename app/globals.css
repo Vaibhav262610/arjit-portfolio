@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 0, 0, 0;
+  --accent-red: 180, 0, 0;
+  --accent-bright: 255, 215, 0;
+  --ink-splash: 255, 0, 0;
+}
+
+@layer base {
+  body {
+    color: rgb(var(--foreground-rgb));
+    background: rgb(var(--background-rgb));
+    font-family: var(--font-noto-serif);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-cinzel);
+  }
+}
+
+/* Brush stroke border */
+.brush-border {
+  position: relative;
+}
+
+.brush-border::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, rgba(var(--accent-red), 0.8) 50%, transparent 100%);
+}
+
+.brush-border::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, rgba(var(--accent-red), 0.8) 50%, transparent 100%);
+}
+
+/* Ink splash background */
+.ink-splash {
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='rgba(var(--ink-splash), 0.05)' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.hero-section {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.section-heading {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.section-heading::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(var(--accent-red), 0.7), transparent);
+}
+
+.skill-bar {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.skill-progress {
+  height: 100%;
+  background: linear-gradient(90deg, rgba(var(--accent-red), 0.7), rgba(var(--accent-bright), 0.3));
+}
+
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.zen-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  z-index: 1;
+  background: transparent;
+  border: 1px solid rgba(var(--accent-red), 0.5);
+}
+
+.zen-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(var(--accent-red), 0.1), transparent);
+  transition: all 0.8s ease;
+  z-index: -1;
+}
+
+.zen-button:hover::before {
+  left: 100%;
+}
+
+.zen-button:hover {
+  border-color: rgba(var(--accent-red), 1);
+}
+
+/* Brush stroke animation */
+.brush-stroke {
+  position: relative;
+  overflow: hidden;
+}
+
+.brush-stroke::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: all 0.8s ease;
+}
+
+.brush-stroke:hover::after {
+  left: 100%;
+}
+
+/* Calligraphy style text */
+.calligraphy {
+  font-family: var(--font-noto-serif);
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+}
+
+/* Ink splash effect */
+.ink-splash-container {
+  position: relative;
+}
+
+.ink-splash-effect {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='rgba(180, 0, 0, 0.15)' d='M65.7,56.3c0,0,1.1-3.2,4.3-3.2c3.2,0,4.3,3.2,4.3,3.2s3.2-1.1,3.2-4.3c0-3.2-3.2-4.3-3.2-4.3s-1.1-3.2-4.3-3.2 c-3.2,0-4.3,3.2-4.3,3.2s-3.2,1.1-3.2,4.3C62.5,55.2,65.7,56.3,65.7,56.3z M30,60c-5.5,0-10,4.5-10,10s4.5,10,10,10s10-4.5,10-10 S35.5,60,30,60z M70,20c-5.5,0-10,4.5-10,10s4.5,10,10,10s10-4.5,10-10S75.5,20,70,20z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.5;
+  z-index: -1;
+}
+.cover-photo {
+  height: 350px;
+  width: 512px;
+  object-fit: cover; /* Optional: keeps the image nicely cropped if needed */
+}
